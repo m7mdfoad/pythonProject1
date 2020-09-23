@@ -15,13 +15,13 @@ def translate(word):
     elif choice =="N" or choice == "n":
         choice = input("did you mean %s instead? 'Y' for yes 'N' for no: " % get_close_matches(word, data.keys())[1])
     else:
-        return " please choose Y or N only."
+        return " we didn't understand your entry."
     if choice == "Y" or choice == "y":
         return data[get_close_matches(word, data.keys())[1]]
     elif choice =="N" or choice == "n":
         choice = input("did you mean %s instead? 'Y' for yes 'N' for no: " % get_close_matches(word, data.keys())[2])
     else:
-        return " please choose Y or N only."
+        return "we didn't understand your entry."
     if choice == "Y" or choice == "y":
         return data[get_close_matches(word, data.keys())[2]]
     else:
@@ -33,5 +33,11 @@ while word != "quit":
     while not word.isalpha():
         word = input("please enter only letters: ")
     # prints the returned object from the method
-    print(translate(word))
+    output = translate(word)
+
+    if type(output) == list:
+        for item in output:
+            print(item)
+    else:
+        print(output)
 
