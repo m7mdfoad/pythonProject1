@@ -1,9 +1,7 @@
 import json
 from difflib import get_close_matches
 
-# use to attach json file to your project and save it into any attribute
 data = json.load(open("data/data.json"))
-# defines new method
 def translate(word):
     word = word.lower()
     if word in data:
@@ -26,7 +24,6 @@ def translate(word):
         return data[get_close_matches(word, data.keys())[2]]
     else:
         return "the word doesn't exists."
-# save input from user to attribute
 word = ""
 while word != "quit":
     word = input("enter any word or quit to exit program: ")
